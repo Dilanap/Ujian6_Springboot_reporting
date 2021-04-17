@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/login.css}"  />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+
+<form th:action="@{/login}" method="post" >
+<div th:if="${param.error}">
+            <p class="text-danger">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+        </div>
+         
+        <div th:if="${param.logout}">
+            <p class="text-warning">You have been logged out.</p>
+        </div>
+  <h1><span>Detik</span> KASUS</h1>
+ 
+                <input type="username" name="username"  id="username" class="form-control" placeholder="Username" required autofocus/>
+            
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required />
+           
+  <button class="btn">  <input type="submit" id="submit" value="Submit"></button>
+  <h6>Oh, social?</h6>
+  <div class="social">
+  <button class="tw btn">Twitter</button>
+  <button class="fb btn">Facebook</button>
+  <button class="google fb btn">Google+</button>
+  </div>
+</form>
+
+<footer>
+  <h5>Right click and visit: <a target="_blank" href="http://lifes.gd">Life's Good</a></h5>
+</footer>
+<script type="text/javascript">
+$(document).ready(function(e){
+	   $('h6').on('click',function(){
+	      $('.social').stop().slideToggle();
+	   });
+	})
+</script>
+</body>
+</html>
