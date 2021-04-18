@@ -58,6 +58,25 @@ public class LaporanPage {
 	}
 	
 	
+	@GetMapping("/laporan/proses/{id}")
+    public String prosesLaporan(@PathVariable String id, Model model) {
+
+        Laporan updateStatus = modelLaporan.cariLaporan(id);
+        updateStatus.setStatus("Telah Diproses");
+        modelLaporan.save(updateStatus);
+        
+        return "redirect:/laporan/view";
+    }
+	
+	@GetMapping("/laporan/reject/{id}")
+    public String rejectLaporan(@PathVariable String id, Model model) {
+
+        Laporan updateStatus = modelLaporan.cariLaporan(id);
+        updateStatus.setStatus("Reject");
+        modelLaporan.save(updateStatus);
+        
+        return "redirect:/laporan/view";
+    }
 	
 	@PostMapping("/laporan/view")
 	public String addLaporan(@RequestParam(value = "file")MultipartFile file,@ModelAttribute Laporan laporan, Model model) throws IOException { {

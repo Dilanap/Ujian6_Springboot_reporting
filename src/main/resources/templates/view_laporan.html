@@ -43,9 +43,21 @@
     
       <td> <img class="img-responsive" width="100" height="100" th:src="@{${laporan.keterangan}}" /> </td>
             <td th:text="${laporan.status}"></td>
-      <td>
-         <a th:href="@{/laporan/update/{id}(id=${laporan.idLaporan})}" class="btn btn-success" tabindex="-1" role="button" ><i class="glyphicon glyphicon-ok" ></i> Proses </a>
-         <a th:href="@{/laporan/update1/{id}(id=${laporan.idLaporan})}" class="btn btn-danger btn-sm" tabindex="-1" role="button" ><i class="fa fa-close"></i> Reject </a>
+      	<td th:switch="${laporan.status}">
+    	<div th:case='null'>
+    	<div th:case='proses'>Telah Diproses</div>
+    	<div th:case='reject'>Reject</div>
+      	<div th:switch="${laporan.status}">
+   			<div th:case = 'null'>
+      			<a th:href="@{/laporan/proses/{id}(id=${laporan.idLaporan})}" class=" btn btn-success" tabindex="-1" role="button" ><i  class="glyphicon glyphicon-ok" ></i> Proses </a>
+        		<a th:href="@{/laporan/reject/{id}(id=${laporan.idLaporan})}"  class="btn btn-primary btn-sm" tabindex="-1" role="button" ><i class="fa fa-close" ></i> Reject </a>
+      		</div>
+        	<div th:case = 'proses'>
+        	<p>Selesai</p>
+       		</div>
+        	<div th:case = 'reject'>
+        	<p>Selesai</p>
+       		</div>
       </td>
     </tr>
  

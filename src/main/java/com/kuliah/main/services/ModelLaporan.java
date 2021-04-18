@@ -42,7 +42,10 @@ public class ModelLaporan  implements ModelLaporanInterface{
 		return laporanRepo.jumlahdata();
 	}
 	
-
+	public void save(Laporan updateStatus) {
+        // TODO Auto-generated method stub
+		this.laporanRepo.save(updateStatus);
+    }
 	@Override
 	public void deleteLaporan(String id) {
 		// TODO Auto-generated method stub
